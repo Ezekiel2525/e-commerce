@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block Title %}
+
+SELLING PAGE
+
+{% endblock %}
+
+{% block content %}
+
+<body>
+    
+    <div class="clean alert alert-danger">
+        <h2>Product Upload Page</h2>
+
+        <form action="{% url 'sell' %}" method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"></legend>
+               {{ pro_form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Upload</button>
+                <br>
+                <br>
+                <a class="text-danger" href="{% url 'index' %}">Click to go to Homepage</a>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h2 class="text center" style="margin-left: 20px;"> Search Results:  </h5>
+
+        <hr>
+
+        <div class="container">
+
+            <div class="row justify-content-center m-4">
+
+                {% if items %}
+    
+                    {% for item in items %}
+        
+                        <div class="col-md-4">
+                            <div class="card m-3 p-4" style="width: 25rem; height: 40rem; box-shadow: 1px 1px 1px 1px #241335; border-radius: 25px 15px; padding: 2px 1px 20px;">
+                                <img src="{{ item.image.url }}" style="height: 200px; width: 200px;"  class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 25px;">
+                                    <h4 class="card-title mt-1">{{ item.product_name }}</h4>
+                                    <h3 style="color: rgb(0, 3, 7)" class="card-subtitle mt-1">${{ item.discount }}</h3>
+                                    <hr>
+                                    <a href="{% url 'store' %}" style="background-color: red;" class="btn btn-danger m-1">Detail</a>
+                                </div>
+                            </div>
+                        </div>
+        
+                    {% endfor %}
+        
+                {% else %}
+                     <p>No Products available </p>
+                {% endif %}
+    
+            </div>
+
+        </div>
+
+
+{% endblock %}   

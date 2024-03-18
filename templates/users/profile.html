@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section flex all clean">
+
+  <div class="media" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+
+    <div style="width: 100%">
+      <img class="rounded-circle account-img sty" style="width: 30%; border-radius: 100px;" src="{{ user.profile.image.url }}">
+    </div>
+
+    <div class="sabi" style="width: 100%;">
+
+      <div class="media-body">
+        <h2 class="account-heading">My Profile</h2>
+        <h3 class="text-dark">{{user.username}}</h3>
+        <h3 class="text-dark">{{user.first_name}} <span class="text-dark">
+          {{user.last_name}}
+        </span></h3>
+        <h4 class="text-dark">{{user.email}}</h4>
+        <p>
+          {{user.profile.address}}
+          {{user.profile.phone}}
+        </p>
+        <p> <a href="{% url 'update' %}" class="text-danger">Click here to Update Profile</a></p>
+        <p> <a href="{% url 'password_change' %}" class="text-danger">Click here to change Password</a></p>
+    
+      </div>
+
+    </div>
+    
+  </div>
+
+</div>
+{% endblock %}
